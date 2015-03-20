@@ -96,26 +96,31 @@
 </body>
 
 <script>
-	$('[required = "required"]').prev('label').append('<span>*</span>').children('span').addClass('required');
-	$('tbody tr:even').addClass('even');
-	
-	$('#btnAddTask').click(function(evt){
-		//alert($(evt.target).html);
-		evt.preventDefault();
-		$('#taskCreation').removeClass('not');
-	});
-	
-	$('tbody tr').click(function(evt){
-		evt.preventDefault();
-		$(evt.target).closest('td').siblings().andSelf().toggleClass('rowHighlight');
-	});
-	
-	$("#tblTasks tbody").on('click', '.deleteRow', 
-		function(evt) {
+
+	$(document).ready(function(){
+
+		$('[required = "required"]').prev('label').append('<span>*</span>').children('span').addClass('required');
+		$('tbody tr:even').addClass('even');
+		
+		$('#btnAddTask').click(function(evt){
+			//alert($(evt.target).html);
 			evt.preventDefault();
-			$(evt.target).parents('tr').remove();
+			$('#taskCreation').removeClass('not');
 		});
-	
+		
+		$('tbody tr').click(function(evt){
+			evt.preventDefault();
+			$(evt.target).closest('td').siblings().andSelf().toggleClass('rowHighlight');
+		});
+		
+		$("#tblTasks tbody").on('click', '.deleteRow', 
+			function(evt) {
+				evt.preventDefault();
+				$(evt.target).parents('tr').remove();
+			});
+			
+		//$('#tblTasks tbody tr:first').clone().insertAfter('#tblTasks tbody tr:last');
+	});
 </script>
 
 </html>
