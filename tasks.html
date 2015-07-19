@@ -6,14 +6,16 @@
 	<link rel="stylesheet" type="text/css" href="styles/tasks.css" media="screen" />
 	<script src="scripts/jquery-2.1.3.js"></script>
 	<script src="scripts/jquery.tmpl.js"></script>
+	<script src="scripts/jquery-serialization.js"></script>
+	<script src="scripts/tasks-controller.js"></script>
 </head>
 <body>
 	<header>
 		<span>Task list</span>
 	</header>
-	<main>
+	<main id="taskPage">
 		<section id="taskCreation" class="not">
-			<form>
+			<form id="taskForm">
 				<div>
 					<label>Task</label> <input type="text" required="required"
 						name="task" class="large" placeholder="Breakfast at Tiffanys" />
@@ -29,7 +31,7 @@
 					</select>
 				</div>
 				<nav>
-					<a href="#" id="saveTask">Save task</a> <a href="#">Clear task</a>
+					<a href="#" id="saveTask">Save task</a> <a href="#" id="clearTask">Clear task</a>
 				</nav>
 			</form>
 		</section>
@@ -61,7 +63,7 @@
 								<a href="#" class="completeRow">Complete</a>
 								<a href="#" class="deleteRow">Delete</a>
 							</nav>
-						</td>						
+						</td>
 					</tr>
 					<tr class="even_">
 						<td>Perform project demo to stakeholders</td>
@@ -104,37 +106,37 @@
 
 		$('[required = "required"]').prev('label').append('<span>*</span>').children('span').addClass('required');
 		$('tbody tr:even').addClass('even');
-		
+
 		$('#btnAddTask').click(function(evt){
 			evt.preventDefault();
 			$('#taskCreation').removeClass('not');
 		});
-		
+
 		$('tbody tr').click(function(evt){
 			evt.preventDefault();
 			$(evt.target).closest('td').siblings().andSelf().toggleClass('rowHighlight');
 		});
-		
-		// save action: convert the form data to an object using the plug-in and then 
+
+		// save action: convert the form data to an object using the plug-in and then
 		// pass this object to the custom template we developed
 		$('#saveTask').click(function(evt){
 			evt.preventDefault();
 			var task = $('form').toObject();
-			alert($('#taskRow').tmpl(task));
+			//alert($('#taskRow').tmpl(task));
 			$('#taskRow').tmpl(task).appendTo($('#tblTasks tbody'));
 		});
-		
-		$("#tblTasks tbody").on('click', '.deleteRow', 
+
+		$("#tblTasks tbody").on('click', '.deleteRow',
 			function(evt) {
 				evt.preventDefault();
 				$(evt.target).parents('tr').remove();
 			});
-			
+
 		//$('#tblTasks tbody tr:first').clone().insertAfter('#tblTasks tbody tr:last');
-		
+
 		(function($) {
 			$.fn.extend( {
-				
+
 				toObject: function() {
 					var result = {}
 					$.each(this.serializeArray(), function(i,v) {
@@ -142,22 +144,22 @@
 					});
 					return result;
 				},
-				
+
 				fromObject: function(obj) {
 					$.each(this.find(':input'), function(i,v) {
 						var name = $(v).attr('name');
 						if (obj[name])  {
 							$(v).val(obj[name]);
-						} 
+						}
 						else {
 							$(v),val('');
 						}
 					});
 				}
-				
+
 			});
 		})(jQuery);
-		
+
 	});
 </script>
 
@@ -173,7 +175,7 @@
 				<a href="#" class="deleteRow">Delete</a>
 			</nav>
 		</td>
-	</tr>	
+	</tr>
 </script>
 
 </html>
