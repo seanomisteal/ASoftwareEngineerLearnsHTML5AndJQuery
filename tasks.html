@@ -101,7 +101,16 @@
 </body>
 
 <script>
-
+	
+	
+	$(document).ready(function(){
+		//alert($('#taskPage').html());
+		//alert(tasksController);
+		tasksController.init($('#taskPage'));
+	});
+	
+	
+	/*
 	$(document).ready(function(){
 
 		$('[required = "required"]').prev('label').append('<span>*</span>').children('span').addClass('required');
@@ -109,6 +118,7 @@
 
 		$('#btnAddTask').click(function(evt){
 			evt.preventDefault();
+			alert('...blah');
 			$('#taskCreation').removeClass('not');
 		});
 
@@ -122,7 +132,6 @@
 		$('#saveTask').click(function(evt){
 			evt.preventDefault();
 			var task = $('form').toObject();
-			//alert($('#taskRow').tmpl(task));
 			$('#taskRow').tmpl(task).appendTo($('#tblTasks tbody'));
 		});
 
@@ -131,8 +140,6 @@
 				evt.preventDefault();
 				$(evt.target).parents('tr').remove();
 			});
-
-		//$('#tblTasks tbody tr:first').clone().insertAfter('#tblTasks tbody tr:last');
 
 		(function($) {
 			$.fn.extend( {
@@ -161,6 +168,7 @@
 		})(jQuery);
 
 	});
+	*/
 </script>
 
 <script id="taskRow" type="text/x-jQuery-tmpl">
