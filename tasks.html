@@ -8,6 +8,9 @@
 	<script src="scripts/jquery.tmpl.js"></script>
 	<script src="scripts/jquery-serialization.js"></script>
 	<script src="scripts/tasks-controller.js"></script>
+	
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+	
 </head>
 <body>
 	<header>
@@ -18,7 +21,7 @@
 			<form id="taskForm">
 				<div>
 					<label>Task</label> <input type="text" required="required"
-						name="task" class="large" placeholder="Breakfast at Tiffanys" />
+						maxLength="200" name="task" class="large" placeholder="Breakfast at Tiffanys" />
 				</div>
 				<div>
 					<label>Required by</label> <input type="date" required="required"
