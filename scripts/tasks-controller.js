@@ -32,7 +32,7 @@ tasksController = function() {		// singleton, to manage state reliably
 				$(taskPage).find('#saveTask').click(function(evt) {
 					evt.preventDefault();
 					
-					if ($(taskPage).find('form').valid()) {}
+					if ($(taskPage).find('form').valid()) {
 						var task = $('form').toObject();
 						$('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
 					}
