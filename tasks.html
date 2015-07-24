@@ -102,13 +102,11 @@
 
 <script>
 	
-	
 	$(document).ready(function(){
 		//alert($('#taskPage').html());
 		//alert(tasksController);
 		tasksController.init($('#taskPage'));
 	});
-	
 	
 	/*
 	$(document).ready(function(){
@@ -118,7 +116,8 @@
 
 		$('#btnAddTask').click(function(evt){
 			evt.preventDefault();
-			alert('...blah');
+			alert('...in tasks.html...');
+			alert($('#taskCreation').attr('class'));
 			$('#taskCreation').removeClass('not');
 		});
 
@@ -168,7 +167,7 @@
 		})(jQuery);
 
 	});
-	*/
+		*/
 </script>
 
 <script id="taskRow" type="text/x-jQuery-tmpl">
